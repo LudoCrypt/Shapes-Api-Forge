@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[35,)"
 license="GNU LESSER GENERAL PUBLIC LICENSE"
-issueTrackerURL="http://my.issue.tracker/"
+issueTrackerURL="https://github.com/LudoCrypt/Shapes-Api-Forge/issues"
 [[mods]]
 modId="shapes"
 version="1.0.0"
