@@ -1,0 +1,18 @@
+modLoader="javafml"
+loaderVersion="[35,)"
+license="GNU LESSER GENERAL PUBLIC LICENSE"
+issueTrackerURL="http://my.issue.tracker/"
+[[mods]]
+modId="shapes"
+version="1.0.0"
+displayName="Terraform Shapes Api"
+credits="Terraformers Vaerian for the original. LudoCrypt for the port"
+authors="Vaerian, LudoCrypt"
+description='''
+Shapes lets you easily create shapes from an equation'''
+[[dependencies.shapes]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)"
+    ordering="NONE"
+    side="BOTH"
