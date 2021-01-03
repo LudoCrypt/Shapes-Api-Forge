@@ -11,8 +11,14 @@ authors="Vaerian, LudoCrypt"
 description='''
 Shapes lets you easily create shapes from an equation'''
 [[dependencies.shapes]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.16.4,1.17)"
-    ordering="NONE"
-    side="BOTH"
+modId="forge"
+mandatory=true
+versionRange="[35,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.shapes]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.4,1.17)"
+ordering="NONE"
+side="BOTH"
