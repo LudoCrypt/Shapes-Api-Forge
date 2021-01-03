@@ -3,13 +3,10 @@ package com.terraformersmc.terraform.shapes.impl;
 import com.terraformersmc.terraform.shapes.api.Position;
 import com.terraformersmc.terraform.shapes.api.Quaternion;
 import com.terraformersmc.terraform.shapes.api.Shape;
-import net.minecraftforge.fml.common.Mod;
 
 /**
  * @author <Wtoll> Will Toll on 2020-06-07
  * @project Shapes
- */
-@Mod("shapes")
 public class Shapes {
 
     public static Shape rectangle(double w, double d) {
