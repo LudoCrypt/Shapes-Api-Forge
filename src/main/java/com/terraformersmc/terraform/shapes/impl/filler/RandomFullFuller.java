@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * @author <Wtoll> Will Toll on 2020-06-07
+ * @author <LudoCrypt> LudoCrypt on 2021-01-04
  * @project Shapes
  */
 public class RandomFullFuller implements Filler {
