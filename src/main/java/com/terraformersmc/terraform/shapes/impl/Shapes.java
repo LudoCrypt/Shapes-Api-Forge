@@ -7,7 +7,7 @@ import com.terraformersmc.terraform.shapes.api.Shape;
 /**
  * @author <Wtoll> Will Toll on 2020-06-07
  * @project Shapes
-**/
+ **/
 public class Shapes {
 
     public static Shape rectangle(double w, double d) {
@@ -85,7 +85,7 @@ public class Shapes {
         );
     }
 
-    public static Shape bentCone(float a, float b, float length, float degrees) {
+    public static Shape bentCone(double a, double b, double length, double degrees) {
         return Shape.of((pos) -> {
             double dist = Math.sqrt(pos.getX() * pos.getX() + pos.getY() + pos.getY() + pos.getZ() + pos.getZ());
             pos = pos.rotateBy(Quaternion.of(0, 0, degrees * (dist / length), true));
