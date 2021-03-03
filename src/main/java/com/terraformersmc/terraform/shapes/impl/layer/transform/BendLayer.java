@@ -25,9 +25,9 @@ public class BendLayer implements Layer {
 	public Position modifyMax(Shape shape) {
 		Position pos = shape.max();
 		double dist = getDist(pos);
-		pos.setX(pos.getX() + dist);
-		pos.setY(pos.getY() + dist);
-		pos.setZ(pos.getZ() + dist);
+		pos.setX(pos.getX() + dist + height);
+		pos.setY(pos.getY() + dist + height);
+		pos.setZ(pos.getZ() + dist + height);
 		return pos;
 	}
 
@@ -35,9 +35,9 @@ public class BendLayer implements Layer {
 	public Position modifyMin(Shape shape) {
 		Position pos = shape.min();
 		double dist = getDist(pos);
-		pos.setX(pos.getX() - dist);
-		pos.setY(pos.getY() - dist);
-		pos.setZ(pos.getZ() - dist);
+		pos.setX(pos.getX() - dist + height);
+		pos.setY(pos.getY() - dist + height);
+		pos.setZ(pos.getZ() - dist + height);
 		return pos;
 	}
 
