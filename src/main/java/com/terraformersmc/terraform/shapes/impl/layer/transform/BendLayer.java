@@ -28,7 +28,7 @@ public class BendLayer implements Layer {
 	@Override
 	public Position modifyMax(Shape shape) {
 		Position pos = shape.max();
-		pos.setY(MathHelper.lerp(reverseLerp(0, 360, arc), pos.getY(), width));
+		pos.setY(MathHelper.lerp(reverseLerp(0, 360, arc), pos.getY(), width * 2));
 		return pos;
 	}
 
