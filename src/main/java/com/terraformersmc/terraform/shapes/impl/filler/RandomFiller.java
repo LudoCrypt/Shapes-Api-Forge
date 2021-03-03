@@ -12,30 +12,30 @@ import java.util.Random;
  * @author <LudoCrypt> LudoCrypt on 2021-01-04
  * @project Shapes
  */
-public class RandomFullFuller implements Filler {
+public class RandomFiller implements Filler {
 
     private final IWorldWriter world;
     private final List<BlockState> state;
     private final Random random;
     private final int flags;
 
-    public RandomFullFuller(IWorldWriter world, List<BlockState> state, int flags, Random random) {
+    public RandomFiller(IWorldWriter world, List<BlockState> state, int flags, Random random) {
         this.world = world;
         this.state = state;
         this.flags = flags;
         this.random = random;
     }
 
-    public RandomFullFuller(IWorldWriter world, List<BlockState> state, Random random) {
+    public RandomFiller(IWorldWriter world, List<BlockState> state, Random random) {
         this(world, state, 3, random);
     }
 
-    public static RandomFullFuller of(IWorldWriter world, List<BlockState> state, int flags, Random random) {
-        return new RandomFullFuller(world, state, flags, random);
+    public static RandomFiller of(IWorldWriter world, List<BlockState> state, int flags, Random random) {
+        return new RandomFiller(world, state, flags, random);
     }
 
-    public static RandomFullFuller of(IWorldWriter world, List<BlockState> state, Random random) {
-        return new RandomFullFuller(world, state, random);
+    public static RandomFiller of(IWorldWriter world, List<BlockState> state, Random random) {
+        return new RandomFiller(world, state, random);
     }
 
     @Override
