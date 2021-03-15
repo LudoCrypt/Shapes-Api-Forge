@@ -7,55 +7,85 @@ import com.terraformersmc.terraform.shapes.api.Quaternion;
 import com.terraformersmc.terraform.shapes.api.Shape;
 import com.terraformersmc.terraform.shapes.api.layer.Layer;
 
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Direction;
 
 public class BendLayer implements Layer {
 
-	private final double arc;
-	private final double width;
-	private final double height;
+	protected final double arc;
+	protected final double height;
+	protected final Direction.Axis axis;
 
-	public BendLayer(double arc, double width, double height) {
+	protected Position minPos = Position.of(0, 0, 0);
+	protected Position maxPos = Position.of(0, 0, 0);
+
+	public BendLayer(double arc, double height, Direction.Axis axis) {
 		this.arc = arc;
-		this.width = width;
 		this.height = height;
+		this.axis = axis;
 	}
 
-	public static BendLayer of(double arc, double width, double height) {
-		return new BendLayer(arc, width, height);
-	}
-
-	@Override
-	public Position modifyMax(Shape shape) {
-		Position pos = shape.max();
-		pos.setY(MathHelper.lerp(reverseLerp(0, 360, arc), pos.getY(), width * 2));
-		return pos;
+	public static BendLayer of(double arc, double height, Direction.Axis axis) {
+		return new BendLayer(arc, height, axis);
 	}
 
 	@Override
 	public Position modifyMin(Shape shape) {
-		Position pos = shape.min();
-		pos.setX(pos.getX() - Math.sin(Math.toRadians(Math.min(arc, 145))) * height);
-		double moss = modifyMax(shape).getY();
-		pos.setY(-MathHelper.lerp(reverseLerp(0, 360, arc), moss, height - moss));
-		return pos;
+
+		shape.stream().forEachOrdered((pos) -> {
+			RotateLayer layer = getRotateLayer(pos);
+			Position min = layer.modifyMin(shape);
+
+			if (min.getX() <= minPos.getX()) {
+				minPos.setX(min.getX());
+			}
+			if (min.getY() <= minPos.getY()) {
+				minPos.setY(min.getY());
+			}
+			if (min.getZ() <= minPos.getZ()) {
+				minPos.setZ(min.getZ());
+			}
+		});
+
+		return minPos;
+	}
+
+	@Override
+	public Position modifyMax(Shape shape) {
+
+		shape.stream().forEachOrdered((pos) -> {
+			RotateLayer layer = getRotateLayer(pos);
+			Position max = layer.modifyMax(shape);
+
+			if (max.getX() >= maxPos.getX()) {
+				maxPos.setX(max.getX());
+			}
+			if (max.getY() >= maxPos.getY()) {
+				maxPos.setY(max.getY());
+			}
+			if (max.getZ() >= maxPos.getZ()) {
+				maxPos.setZ(max.getZ());
+			}
+		});
+
+		return maxPos;
 	}
 
 	@Override
 	public Predicate<Position> modifyEquation(Shape shape) {
-		return (pos) -> new RotateLayer(getRotation(pos)).modifyEquation(shape).test(pos);
+		return (pos) -> getRotateLayer(pos).modifyEquation(shape).test(pos);
 	}
 
-	private double getDist(Position pos) {
+	protected RotateLayer getRotateLayer(Position pos) {
+		return new RotateLayer(getRotation(pos));
+	}
+
+	protected double getDist(Position pos) {
 		return Math.sqrt(pos.getX() * pos.getX() + pos.getY() + pos.getY() + pos.getZ() + pos.getZ());
 	}
 
-	private Quaternion getRotation(Position pos) {
-		return Quaternion.of(0, 0, arc * (getDist(pos) / height), true);
-	}
-
-	private double reverseLerp(double start, double end, double place) {
-		return ((place - start) / (end - start));
+	protected Quaternion getRotation(Position pos) {
+		double rotation = arc * (getDist(pos) / height);
+		return Quaternion.of(axis.equals(Direction.Axis.X) ? rotation : 0, axis.equals(Direction.Axis.Y) ? rotation : 0, axis.equals(Direction.Axis.Z) ? rotation : 0, true);
 	}
 
 }
