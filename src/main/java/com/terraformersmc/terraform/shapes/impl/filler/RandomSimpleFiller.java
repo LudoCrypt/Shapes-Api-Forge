@@ -42,7 +42,7 @@ public class RandomSimpleFiller implements Filler {
     @Override
     public void accept(Position position) {
         if (this.random.nextFloat() < this.probability) {
-            world.setBlockState(position.toBlockPos(), this.state, this.flags);
+            world.setBlock(position.toBlockPos(), this.state, this.flags);
         }
     }
 }

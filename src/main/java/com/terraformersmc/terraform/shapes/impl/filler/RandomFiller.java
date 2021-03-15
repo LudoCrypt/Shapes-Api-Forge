@@ -40,6 +40,6 @@ public class RandomFiller implements Filler {
 
     @Override
     public void accept(Position position) {
-        world.setBlockState(position.toBlockPos(), this.state.get(random.nextInt(this.state.size())), this.flags);
+        world.setBlock(position.toBlockPos(), this.state.get(random.nextInt(this.state.size())), this.flags);
     }
 }
