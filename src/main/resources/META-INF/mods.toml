@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/LudoCrypt/Shapes-Api-Forge/issues"
 
 [[mods]]
 modId="shapes"
-version="1.0.0"
+version="1.2.3"
 displayName="Terraform Shapes Api"
 credits="Vaerian for the original. LudoCrypt for the port"
 authors="Terraformers, Vaerian, LudoCrypt"
