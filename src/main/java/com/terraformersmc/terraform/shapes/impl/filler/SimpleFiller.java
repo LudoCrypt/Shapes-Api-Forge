@@ -35,6 +35,6 @@ public class SimpleFiller implements Filler {
 
     @Override
     public void accept(Position position) {
-        world.setBlockState(position.toBlockPos(), this.state, this.flags);
+        world.setBlock(position.toBlockPos(), this.state, this.flags);
     }
 }

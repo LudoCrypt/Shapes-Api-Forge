@@ -36,6 +36,6 @@ public class SafelistValidator extends AllMeetValidator {
 
     @Override
     public boolean test(Position position) {
-        return IWorldGenerationBaseReader.hasBlockState(position.toBlockPos(), (state) -> state.isAir() || safeStates.contains(state));
+        return IWorldGenerationBaseReader.isStateAtPosition(position.toBlockPos(), (state) -> state.isAir() || safeStates.contains(state));
     }
 }

@@ -79,7 +79,7 @@ public interface Quaternion {
     }
 
     static Quaternion of(net.minecraft.util.math.vector.Quaternion q) {
-        return of(q.getW(), q.getX(), q.getY(), q.getZ());
+        return of(q.r(), q.i(), q.j(), q.k());
     }
 
     static Quaternion of(Quaternion q) {

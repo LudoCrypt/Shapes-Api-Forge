@@ -2,20 +2,24 @@ modLoader="javafml"
 loaderVersion="[35,)"
 license="GNU LESSER GENERAL PUBLIC LICENSE"
 issueTrackerURL="https://github.com/LudoCrypt/Shapes-Api-Forge/issues"
+
 [[mods]]
 modId="shapes"
 version="1.0.0"
 displayName="Terraform Shapes Api"
-credits="Terraformers Vaerian for the original. LudoCrypt for the port"
-authors="Vaerian, LudoCrypt"
+credits="Vaerian for the original. LudoCrypt for the port"
+authors="Terraformers, Vaerian, LudoCrypt"
 description='''
-Shapes lets you easily create shapes from an equation'''
+Shapes lets you easily create shapes from an equation
+'''
+
 [[dependencies.shapes]]
 modId="forge"
 mandatory=true
 versionRange="[35,)"
 ordering="NONE"
 side="BOTH"
+
 [[dependencies.shapes]]
 modId="minecraft"
 mandatory=true

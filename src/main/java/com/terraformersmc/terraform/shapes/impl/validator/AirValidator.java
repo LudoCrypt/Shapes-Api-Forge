@@ -35,9 +35,9 @@ public class AirValidator extends AllMeetValidator {
     @Override
     public boolean test(Position position) {
         if (IWorldReader != null) {
-            return IWorldReader.isAirBlock(position.toBlockPos());
+            return IWorldReader.isEmptyBlock(position.toBlockPos());
         } else if (IWorldGenerationBaseReader != null) {
-            return IWorldGenerationBaseReader.hasBlockState(position.toBlockPos(), (state) -> state.isAir());
+            return IWorldGenerationBaseReader.isStateAtPosition(position.toBlockPos(), (state) -> state.isAir());
         } else {
             return false;
         }
